@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/language">
+
+
+    <include app:graph="@navigation/nav_android" />
+
+    <fragment
+        android:id="@+id/language"
+        android:name="com.chengcan.assistant.language.LanguageFragment"
+        android:label="@string/language"
+        tools:layout="@layout/fragment_language">
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment2"
+            app:destination="@id/diary"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/diary"
+        android:name="com.chengcan.assistant.diary.DiaryFragment"
+        android:label="@string/diary"
+        tools:layout="@layout/fragment_diary">
+        <argument
+            android:name="argument1"
+            android:defaultValue="2"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/officeFragment"
+        android:name="com.chengcan.assistant.andriod.OfficeFragment"
+        android:label="fragment_office"
+        tools:layout="@layout/fragment_office" />
+</navigation>

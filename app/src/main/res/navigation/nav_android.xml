@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_android"
+    app:startDestination="@id/android">
+
+    <fragment
+        android:id="@+id/android"
+        android:name="com.chengcan.assistant.andriod.AndroidFragment"
+        android:label="fragment_android"
+        tools:layout="@layout/fragment_android" >
+        <action
+            android:id="@+id/action_android_to_officeWeb"
+            app:destination="@id/officeWeb" />
+    </fragment>
+    <fragment
+        android:id="@+id/officeWeb"
+        android:name="com.chengcan.assistant.andriod.OfficeFragment"
+        android:label="@string/office_web"
+        tools:layout="@layout/fragment_office" />
+
+</navigation>
