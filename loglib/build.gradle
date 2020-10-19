@@ -1,0 +1,3 @@
+apply from:"${rootProject.rootDir}/versions.gradle"
+
+project.ext.setLibDefaultConfig project

@@ -1,0 +1,173 @@
+project.ext {
+
+    setAppDefaultConfig = {
+        extension ->
+            extension.apply plugin: 'com.android.application'
+            extension.apply plugin: 'kotlin-android'
+            extension.apply plugin: 'kotlin-android-extensions'
+            extension.apply plugin: "androidx.navigation.safeargs.kotlin"
+            extension.apply plugin: 'kotlin-kapt'
+            extension.apply plugin: 'dagger.hilt.android.plugin'
+
+            setAndroidConfig extension.android
+            extension.android {
+                defaultConfig {
+                    applicationId "com.chengcan.assistant"
+                }
+            }
+            setAndroidDependencies extension.dependencies
+            extension.dependencies{
+                dependencies {
+                    implementation project(path: ':languagemodule')
+                    implementation project(path: ':base')
+                    implementation project(path: ':androidmodule')
+                    implementation project(path: ':diarymodule')
+                }
+            }
+
+    }
+
+    setModuleLibDefaultConfig = {
+        extension ->
+            extension.apply plugin: 'com.android.library'
+            extension.apply plugin: 'kotlin-android'
+            extension.apply plugin: 'kotlin-android-extensions'
+            extension.apply plugin: "androidx.navigation.safeargs.kotlin"
+            extension.apply plugin: 'kotlin-kapt'
+            extension.apply plugin: 'dagger.hilt.android.plugin'
+
+            setAndroidConfig extension.android
+            setAndroidDependencies extension.dependencies
+            extension.dependencies{
+                implementation project(path: ':loglib')
+                implementation project(path: ':common')
+            }
+
+    }
+
+    setLibDefaultConfig = {
+        extension ->
+            extension.apply plugin: 'com.android.library'
+            extension.apply plugin: 'kotlin-android'
+            extension.apply plugin: 'kotlin-android-extensions'
+            extension.apply plugin: "androidx.navigation.safeargs.kotlin"
+            extension.apply plugin: 'kotlin-kapt'
+            extension.apply plugin: 'dagger.hilt.android.plugin'
+
+            setAndroidConfig extension.android
+            setAndroidDependencies extension.dependencies
+            extension.dependencies{
+                implementation project(path: ':common')
+            }
+
+    }
+
+    setBaseLibDefaultConfig = {
+        extension ->
+            extension.apply plugin: 'com.android.library'
+            extension.apply plugin: 'kotlin-android'
+            extension.apply plugin: 'kotlin-android-extensions'
+            extension.apply plugin: "androidx.navigation.safeargs.kotlin"
+            extension.apply plugin: 'kotlin-kapt'
+            extension.apply plugin: 'dagger.hilt.android.plugin'
+
+            setAndroidConfig extension.android
+            setAndroidDependencies extension.dependencies
+            extension.dependencies{
+                implementation project(path: ':loglib')
+                implementation project(path: ':common')
+            }
+
+    }
+
+
+    setAndroidConfig = {
+        extension ->
+            extension.compileSdkVersion 30
+            extension.buildToolsVersion "29.0.3"
+
+            extension.defaultConfig {
+                minSdkVersion 16
+                targetSdkVersion 30
+                versionCode 1
+                versionName "1.0"
+
+                testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                consumerProguardFiles "consumer-rules.pro"
+            }
+
+            extension.buildTypes {
+                release {
+                    minifyEnabled false
+                    proguardFiles extension.getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                }
+            }
+
+            extension.compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+
+            extension.kotlinOptions {
+                jvmTarget = "1.8"
+            }
+
+            extension.resourcePrefix project.model.name+"_"
+    }
+
+    setAndroidDependencies = {
+        extension ->
+
+            extension.implementation fileTree(dir: "libs", include: ["*.jar"])
+            extension.implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+            extension.implementation 'androidx.core:core-ktx:1.3.2'
+            extension.implementation 'androidx.appcompat:appcompat:1.2.0'
+            extension.implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+            extension.implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+            extension.testImplementation 'junit:junit:4.12'
+            extension.androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+            extension.androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+            extension.implementation "com.google.dagger:hilt-android:2.28-alpha"
+            extension.kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
+
+            def room_version = "2.2.5"
+
+            extension.implementation "androidx.room:room-runtime:$room_version"
+            extension.kapt "androidx.room:room-compiler:$room_version"
+
+            // optional - Kotlin Extensions and Coroutines support for Room
+            extension.implementation "androidx.room:room-ktx:$room_version"
+
+            // optional - Test helpers
+            extension.testImplementation "androidx.room:room-testing:$room_version"
+
+//            extension.implementation extension.project(path: ':common')
+//            extension.implementation extension.project(path: ':loglib')
+
+            def nav_version = "2.3.0"
+
+            // Java language implementation
+            extension.implementation "androidx.navigation:navigation-fragment:$nav_version"
+            extension.implementation "androidx.navigation:navigation-ui:$nav_version"
+
+            // Kotlin
+            extension.implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+            extension.implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+            // Feature module Support
+            extension.implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+            // Testing Navigation
+            extension.androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+            extension.implementation 'com.yanzhenjie:permission:2.0.3'
+
+            extension.implementation "androidx.recyclerview:recyclerview:1.1.0"
+            // For control over item selection of both touch and mouse driven selection
+            extension.implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc03"
+
+    }
+
+
+}

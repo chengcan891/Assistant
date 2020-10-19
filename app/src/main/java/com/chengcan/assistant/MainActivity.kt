@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.chengcan.base.BaseFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.yanzhenjie.permission.Action
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         Log.i("MainActivity", "onCreate")
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.app_activity_main)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -96,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment.childFragmentManager.fragments.forEach {
             Log.i("MainActivity", it.toString())
-            return (it as BaseFragment).onBackPressed()
+            return if(it is BaseFragment) it.onBackPressed() else false
         }
 
         return false

@@ -1,0 +1,6 @@
+apply from:"${rootProject.rootDir}/versions.gradle"
+project.ext.setModuleLibDefaultConfig project
+
+dependencies {
+    implementation project(path: ':base')
+}

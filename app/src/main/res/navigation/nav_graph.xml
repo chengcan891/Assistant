@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/language"
-        android:name="com.chengcan.assistant.language.LanguageFragment"
+        android:name="com.chengcan.language.LanguageFragment"
         android:label="@string/language"
         tools:layout="@layout/fragment_language">
         <action
@@ -24,9 +24,9 @@
     </fragment>
     <fragment
         android:id="@+id/diary"
-        android:name="com.chengcan.assistant.diary.DiaryFragment"
+        android:name="com.chengcan.diary.DiaryFragment"
         android:label="@string/diary"
-        tools:layout="@layout/fragment_diary">
+        tools:layout="@layout/diarymodule_fragment_diary">
         <argument
             android:name="argument1"
             android:defaultValue="2"
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/officeFragment"
-        android:name="com.chengcan.assistant.andriod.OfficeFragment"
+        android:name="com.chengcan.android.OfficeFragment"
         android:label="fragment_office"
         tools:layout="@layout/fragment_office" />
 </navigation>
