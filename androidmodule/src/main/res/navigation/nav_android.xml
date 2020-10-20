@@ -16,14 +16,14 @@
     </fragment>
     <fragment
         android:id="@+id/officeWeb"
-        android:name="com.chengcan.android.OfficeFragment"
+        android:name="com.chengcan.android.WebFragment"
         android:label="@string/office_web"
-        tools:layout="@layout/fragment_office" />
+        tools:layout="@layout/androidmodule_fragment_web" />
     <fragment
         android:id="@+id/graphic"
         android:name="com.chengcan.android.graphic.GraphicFragment"
         android:label="@string/androidmodule_graphic"
-        tools:layout="@layout/fragment_office" >
+        tools:layout="@layout/androidmodule_fragment_web" >
         <action
             android:id="@+id/androidmodule_action_graphic_to_canvas"
             app:destination="@id/canvas" />
@@ -33,10 +33,17 @@
         android:id="@+id/canvas"
         android:name="com.chengcan.android.graphic.CanvasFragment"
         android:label="@string/androidmodule_graphic"
-        tools:layout="@layout/fragment_office" >
+        tools:layout="@layout/androidmodule_fragment_web" >
         <argument
             android:name="view"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/display"
+        android:name="com.chengcan.android.graphic.DisplayFragment"
+        android:label="@string/androidmodule_display"
+        tools:layout="@layout/androidmodule_fragment_display" >
     </fragment>
 
 </navigation>

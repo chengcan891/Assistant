@@ -1,4 +1,5 @@
 <resources>
     <string name="office_web">官网</string>
     <string name="androidmodule_graphic">图形</string>
+    <string name="androidmodule_display">尺寸</string>
 </resources>

@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/officeFragment"
-        android:name="com.chengcan.android.OfficeFragment"
+        android:name="com.chengcan.android.WebFragment"
         android:label="fragment_office"
-        tools:layout="@layout/fragment_office" />
+        tools:layout="@layout/androidmodule_fragment_web" />
 </navigation>

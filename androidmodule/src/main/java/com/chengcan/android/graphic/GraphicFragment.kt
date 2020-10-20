@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chengcan.android.R
 import com.chengcan.android.graphic.view.ColorView
 import com.chengcan.android.graphic.view.CoordinateSystemView
+import com.chengcan.android.graphic.view.DrawTextView
 import com.chengcan.android.main.ItemWrapper
 import com.chengcan.android.main.NavAdapter
 import com.chengcan.base.BaseFragment
@@ -43,8 +44,10 @@ class GraphicFragment: BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val data: ArrayList<ItemWrapper> = ArrayList()
+        data.add(ItemWrapper("尺寸", R.id.display))
         data.add(ItemWrapper("坐标系", R.id.canvas, bundleOf(ARG_VIEW to CoordinateSystemView::class.java.name)))
         data.add(ItemWrapper("颜色", R.id.canvas, bundleOf(ARG_VIEW to ColorView::class.java.name)))
+        data.add(ItemWrapper("文字", R.id.canvas, bundleOf(ARG_VIEW to DrawTextView::class.java.name)))
         val adapter = NavAdapter(data, this)
         recyclerview.adapter = adapter
         recyclerview.layoutManager = LinearLayoutManager(context)
