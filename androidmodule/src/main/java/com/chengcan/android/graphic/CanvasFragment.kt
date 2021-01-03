@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.chengcan.android.R
 import com.chengcan.base.BaseFragment
@@ -22,6 +25,9 @@ const val ARG_VIEW = "view"
  */
 class CanvasFragment : BaseFragment() {
 
+    var v1:View?=null
+    lateinit var c:LinearLayout
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,16 +38,27 @@ class CanvasFragment : BaseFragment() {
         v?.let {
             val clazz = Class.forName(v)
             val method = clazz.getDeclaredConstructor(Context::class.java)
-            return method.newInstance(context) as View
+            v1 = method.newInstance(context) as View
+            v1!!.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+
+//            val root = inflater.inflate(R.layout.androidmodule_fragment_canvas, container, false)
+
+//           val t = TextView(context)
+//            t.setText("==========")
+//            c = root.findViewById<LinearLayout>(R.id.container)
+//           c.addView(t)
+
+            return v1
         }
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_android, container, false)
+        return inflater.inflate(R.layout.androidmodule_fragment_android, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        c.addView(v1)
 
 //        mAdapter.setSelectionTracker(mSelectionTracker)
 

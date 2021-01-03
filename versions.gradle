@@ -76,6 +76,7 @@ project.ext {
             extension.dependencies{
                 implementation project(path: ':loglib')
                 implementation project(path: ':common')
+  //              implementation project(path: ':androidCommonlibrary')
             }
 
     }
@@ -87,7 +88,7 @@ project.ext {
             extension.buildToolsVersion "29.0.3"
 
             extension.defaultConfig {
-                minSdkVersion 16
+                minSdkVersion 26
                 targetSdkVersion 30
                 versionCode 1
                 versionName "1.0"

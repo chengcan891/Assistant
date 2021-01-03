@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph" />
+            app:navGraph="@navigation/app_nav_graph" />
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -46,5 +46,5 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_drawer_menu" />
+        app:menu="@menu/app_nav_drawer_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>

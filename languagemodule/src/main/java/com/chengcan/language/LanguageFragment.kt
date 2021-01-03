@@ -8,15 +8,16 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.navOptions
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.chengcan.base.BaseFragment
-import com.chengcan.common.DateUtils
+import com.chengcan.base.adapter.ItemWrapper
+import com.chengcan.base.adapter.NavAdapter
 import com.chengcan.language.app.LanguageApplication
-import com.chengcan.language.db.Word
 import com.chengcan.log.Logger
-import kotlinx.android.synthetic.main.fragment_language.*
+import kotlinx.android.synthetic.main.languagemodule_fragment_language.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,20 +41,32 @@ class LanguageFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_language, container, false)
+        return inflater.inflate(R.layout.languagemodule_fragment_language, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val options = navOptions {
-            anim {
-                enter = R.anim.slide_in_right
-                exit = R.anim.slide_out_left
-                popEnter = R.anim.slide_in_left
-                popExit = R.anim.slide_out_right
-            }
-        }
+        val data: ArrayList<ItemWrapper> = ArrayList()
+        data.add(ItemWrapper(getString(R.string.languagemodule_a2), R.id.languagemodule_wjc))
+        val adapter = NavAdapter(data, this)
+        recyclerview.adapter = adapter
+        recyclerview.layoutManager = LinearLayoutManager(context)
+        recyclerview.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
+//        val options = navOptions {
+//            anim {
+//                enter = R.anim.base_slide_in_right
+//                exit = R.anim.base_slide_out_left
+//                popEnter = R.anim.base_slide_in_left
+//                popExit = R.anim.base_slide_out_right
+//            }
+//        }
 
 
 //        text.setOnClickListener( Navigation.createNavigateOnClickListener(R.id.action_blankFragment_to_blankFragment2, null))
@@ -69,17 +82,15 @@ class LanguageFragment : BaseFragment() {
 //            findNavController(this).navigate(action)
 //        }
 
-        text.setOnClickListener {
-            GlobalScope.launch { // 在后台启动一个新的协程并继续
-//                LanguageApplication.db.wordDao().insert(Word("name", "people's name"))
-//                LanguageApplication.db.wordDao().insert(Word("age", "people's age"))
-
-                val words = LanguageApplication.db.wordDao().getAll()
-                Logger.i("LanguageFragment",words.toString())
-
-            }
-
-        }
+//        text.setOnClickListener {
+//            GlobalScope.launch { // 在后台启动一个新的协程并继续
+//
+//                val words = LanguageApplication.db.wordDao().getAll()
+//                Logger.i("LanguageFragment",words.toString())
+//
+//            }
+//
+//        }
 
         val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
 

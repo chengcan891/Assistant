@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,10 +12,12 @@ import com.chengcan.android.R
 import com.chengcan.android.graphic.view.ColorView
 import com.chengcan.android.graphic.view.CoordinateSystemView
 import com.chengcan.android.graphic.view.DrawTextView
-import com.chengcan.android.main.ItemWrapper
-import com.chengcan.android.main.NavAdapter
+//import com.chengcan.android.main.ItemWrapper
+//import com.chengcan.android.main.NavAdapter
 import com.chengcan.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_graphic.*
+import com.chengcan.base.adapter.ItemWrapper
+import com.chengcan.base.adapter.NavAdapter
+import kotlinx.android.synthetic.main.androidmodule_fragment_graphic.*
 
 /**
  * https://blog.csdn.net/qq_41405257/article/details/80487997
@@ -28,15 +29,15 @@ class GraphicFragment: BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_graphic, container, false)
+        return inflater.inflate(R.layout.androidmodule_fragment_graphic, container, false)
     }
 
     val options = navOptions {
         anim {
-            enter = R.anim.slide_in_right
-            exit = R.anim.slide_out_left
-            popEnter = R.anim.slide_in_left
-            popExit = R.anim.slide_out_right
+            enter = R.anim.base_slide_in_right
+            exit = R.anim.base_slide_out_left
+            popEnter = R.anim.base_slide_in_left
+            popExit = R.anim.base_slide_out_right
         }
     }
 

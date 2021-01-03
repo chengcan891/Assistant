@@ -4,10 +4,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.AndroidFragment">
+    tools:context=".userinterface.UIFragment">
 
     <TextView
-       android:id="@+id/text"
+       android:id="@+id/start"
 
         android:layout_width="match_parent" android:layout_height="wrap_content"/>
 </LinearLayout>

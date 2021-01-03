@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/languagemodule_main">
+
+
+    <include app:graph="@navigation/androidmodule_nav_android" />
+
+    <include app:graph="@navigation/languagemodule_main" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/language"-->
+<!--        android:name="com.chengcan.language.LanguageFragment"-->
+<!--        android:label="@string/language"-->
+<!--        tools:layout="@layout/languagemodule_fragment_language">-->
+<!--        <action-->
+<!--            android:id="@+id/action_blankFragment_to_blankFragment2"-->
+<!--            app:destination="@id/diary"-->
+<!--            app:enterAnim="@anim/base_slide_in_right"-->
+<!--            app:exitAnim="@anim/base_slide_out_left"-->
+<!--            app:popEnterAnim="@anim/base_slide_in_left"-->
+<!--            app:popExitAnim="@anim/base_slide_out_right" />-->
+
+<!--    </fragment>-->
+    <fragment
+        android:id="@+id/diary"
+        android:name="com.chengcan.diary.DiaryFragment"
+        android:label="@string/diary"
+        tools:layout="@layout/diarymodule_fragment_diary">
+        <argument
+            android:name="argument1"
+            android:defaultValue="2"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/officeFragment"
+        android:name="com.chengcan.android.WebFragment"
+        android:label="fragment_office"
+        tools:layout="@layout/androidmodule_fragment_web" />
+</navigation>

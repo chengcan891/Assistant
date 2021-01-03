@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/languagemodule_main"
+    app:startDestination="@id/languagemodule_languagefragment">
+
+    <fragment
+
+        android:id="@+id/languagemodule_languagefragment"
+        android:name="com.chengcan.language.LanguageFragment"
+        android:label="语言"
+        tools:layout="@layout/languagemodule_fragment_language" />
+
+    <include app:graph="@navigation/languagemodule_wjc" />
+</navigation>

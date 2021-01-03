@@ -1,5 +1,7 @@
 package com.chengcan.assistant
 
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         //配置不需要返回按钮的fragment
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.diary, R.id.language, R.id.android),
+            setOf(R.id.diary, R.id.languagemodule_main, R.id.android),
             drawerLayout
         )
 
@@ -68,8 +70,15 @@ class MainActivity : AppCompatActivity() {
         AndPermission.with(this)
             .runtime()
             .permission(Permission.Group.STORAGE)
+//            .permission(WRITE_EXTERNAL_STORAGE)
+//            .permission(READ_EXTERNAL_STORAGE)
             .onGranted(Action<List<String?>> { permissions: List<String?>? -> })
-            .onDenied(Action<List<String?>> { permissions: List<String?>? -> })
+            .onDenied(Action<List<String?>> { permissions: List<String?>? ->
+
+
+                finish()
+
+            })
             .start()
 
     }

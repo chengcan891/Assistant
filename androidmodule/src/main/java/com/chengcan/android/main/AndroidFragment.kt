@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chengcan.android.R
+import com.chengcan.android.userinterface.UIFragment
 import com.chengcan.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_android.*
+import com.chengcan.base.adapter.ItemWrapper
+import com.chengcan.base.adapter.NavAdapter
+import kotlinx.android.synthetic.main.androidmodule_fragment_android.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,7 +22,7 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [AndroidFragment.newInstance] factory method to
+ * Use the [UIFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class AndroidFragment : BaseFragment() {
@@ -40,15 +43,17 @@ class AndroidFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_android, container, false)
+        return inflater.inflate(R.layout.androidmodule_fragment_android, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val data: ArrayList<ItemWrapper> = ArrayList()
-        data.add(ItemWrapper(getString(R.string.office_web), R.id.officeWeb))
+        data.add(ItemWrapper(getString(R.string.androidmodule_office_web), R.id.officeWeb))
         data.add(ItemWrapper(getString(R.string.androidmodule_graphic), R.id.graphic))
+        data.add(ItemWrapper(getString(R.string.androidmodule_ui), R.id.ui))
+        data.add(ItemWrapper(getString(R.string.androidmodule_net), R.id.androidmodule_netfragment))
         val adapter = NavAdapter(data, this)
         recyclerview.adapter = adapter
         recyclerview.layoutManager = LinearLayoutManager(context)
@@ -58,25 +63,6 @@ class AndroidFragment : BaseFragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
-
-
-//        mAdapter.setSelectionTracker(mSelectionTracker)
-
-
-//        text.setOnClickListener {
-//            val options = navOptions {
-//                anim {
-//                    enter = R.anim.slide_in_right
-//                    exit = R.anim.slide_out_left
-//                    popEnter = R.anim.slide_in_left
-//                    popExit = R.anim.slide_out_right
-//                }
-//            }
-////            findNavController(this).navigate(R.id.officeWeb,null, options)
-//
-//
-//        }
-
     }
 
     companion object {
@@ -91,7 +77,7 @@ class AndroidFragment : BaseFragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            AndroidFragment().apply {
+            UIFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

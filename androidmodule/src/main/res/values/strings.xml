@@ -1,5 +1,11 @@
 <resources>
-    <string name="office_web">官网</string>
+    <string name="androidmodule_office_web">官网</string>
     <string name="androidmodule_graphic">图形</string>
     <string name="androidmodule_display">尺寸</string>
+    <string name="androidmodule_ui">界面</string>
+    <string name="androidmodule_notification">通知</string>
+    <string name="androidmodule_dialog">对话框</string>
+    <string name="androidmodule_net">网络</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

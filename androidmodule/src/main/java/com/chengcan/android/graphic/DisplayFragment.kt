@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.chengcan.android.R
 import com.chengcan.base.BaseFragment
-import com.chengcan.base.utils.DensityUtils
+import com.chengcan.base.utils.DensityUtil
 import kotlinx.android.synthetic.main.androidmodule_fragment_display.*
 import kotlin.math.sqrt
 
@@ -58,9 +58,9 @@ class DisplayFragment : BaseFragment() {
         sb.append("\n\n1英寸等于2.54厘米")
             .append("\n每厘米上的点:xdpi/2.54=").append(metrics.xdpi/2.54)
 
-        text.setText(sb.toString())
+        start.setText(sb.toString())
 
-        context?.let { DensityUtils.getPingMuSize(it) }
+        context?.let { DensityUtil.getPingMuSize(it) }
 
     }
 }

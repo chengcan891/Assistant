@@ -1,18 +1,17 @@
 package com.chengcan.diary
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.chengcan.base.BaseFragment
-import com.chengcan.common.DateUtils
 import com.chengcan.diary.app.DiaryApplication
-import com.chengcan.diary.db.Diary
 import com.chengcan.log.Logger
+import kotlinx.android.synthetic.main.diarymodule_fragment_diary.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.android.synthetic.main.diarymodule_fragment_diary.*
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,15 +54,33 @@ class DiaryFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        text.setOnClickListener {
+        start.setOnClickListener {
             GlobalScope.launch { // 在后台启动一个新的协程并继续
 //                DiaryApplication.db.diaryDao().insert(Diary(System.currentTimeMillis(), "33333"))
 
-                val diaries = DiaryApplication.db.diaryDao().queryDiary(DateUtils.getTodayBeginMilliseconds(), DateUtils.getTodayEndMilliseconds())
+                val diaries = DiaryApplication.db.diaryDao().queryDiary(getTodayBeginMilliseconds(), getTodayEndMilliseconds())
                 Logger.i("DiaryFragment",diaries.toString())
             }
 
         }
+    }
+
+    private fun getDayBeginMilliseconds(day: Int): Long {
+        val calendar = Calendar.getInstance()
+        calendar[Calendar.HOUR_OF_DAY] = 0
+        calendar[Calendar.MINUTE] = 0
+        calendar[Calendar.SECOND] = 0
+        calendar[Calendar.MILLISECOND] = 0
+        calendar.add(Calendar.DATE, day)
+        return calendar.timeInMillis
+    }
+
+    fun getTodayBeginMilliseconds(): Long {
+        return getDayBeginMilliseconds(0)
+    }
+
+    fun getTodayEndMilliseconds(): Long {
+        return getDayBeginMilliseconds(1)
     }
 
     override fun onBackPressed():Boolean {

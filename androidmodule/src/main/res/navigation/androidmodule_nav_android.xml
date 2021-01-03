@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_android"
+    app:startDestination="@id/android">
+    <fragment
+        android:id="@+id/androidmodule_netfragment"
+        android:name="com.chengcan.android.net.NetFragment"
+        android:label="fragment_net"
+        tools:layout="@layout/androidmodule_fragment_net" />
+    <fragment
+        android:id="@+id/android"
+        android:name="com.chengcan.android.main.AndroidFragment"
+        android:label="android"
+        tools:layout="@layout/androidmodule_fragment_android" >
+        <action
+            android:id="@+id/action_android_to_officeWeb"
+            app:destination="@id/officeWeb" />
+    </fragment>
+    <fragment
+        android:id="@+id/officeWeb"
+        android:name="com.chengcan.android.WebFragment"
+        android:label="@string/androidmodule_office_web"
+        tools:layout="@layout/androidmodule_fragment_web" />
+    <fragment
+        android:id="@+id/graphic"
+        android:name="com.chengcan.android.graphic.GraphicFragment"
+        android:label="@string/androidmodule_graphic"
+        tools:layout="@layout/androidmodule_fragment_web" >
+        <action
+            android:id="@+id/androidmodule_action_graphic_to_canvas"
+            app:destination="@id/canvas" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/canvas"
+        android:name="com.chengcan.android.graphic.CanvasFragment"
+        android:label="@string/androidmodule_graphic"
+        tools:layout="@layout/androidmodule_fragment_web" >
+        <argument
+            android:name="view"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/display"
+        android:name="com.chengcan.android.graphic.DisplayFragment"
+        android:label="@string/androidmodule_display"
+        tools:layout="@layout/androidmodule_fragment_display" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/ui"
+        android:name="com.chengcan.android.userinterface.UIFragment"
+        android:label="@string/androidmodule_ui"
+        tools:layout="@layout/androidmodule_fragment_ui"/>
+
+    <fragment
+        android:id="@+id/notification"
+        android:name="com.chengcan.android.userinterface.notification.NotificationFragment"
+        android:label="@string/androidmodule_notification"
+        tools:layout="@layout/androidmodule_fragment_notification"/>
+
+    <fragment
+        android:id="@+id/dialog"
+        android:name="com.chengcan.android.userinterface.dialog.DialogFragment"
+        android:label="@string/androidmodule_dialog"
+        tools:layout="@layout/androidmodule_fragment_dialog"/>
+
+</navigation>
