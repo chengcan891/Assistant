@@ -1,4 +1,4 @@
-//include ':androidCommonlibrary'
+include ':bug'//include ':androidCommonlibrary'
 include ':loglib'
 include ':diarymodule'
 include ':androidmodule'

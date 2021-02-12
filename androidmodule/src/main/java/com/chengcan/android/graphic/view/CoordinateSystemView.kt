@@ -40,9 +40,19 @@ class CoordinateSystemView : View {
         canvas.restore()
 
         //再次平移坐标系并在此基础上旋转坐标系，第三次绘制坐标轴
+        canvas.save()
         canvas.translate(canvasWidth.toFloat() / 2, canvasWidth.toFloat() / 2);//在上次平移的基础上再把坐标系向右下角平移
         canvas.rotate(30.toFloat());//基于当前绘图坐标系的原点旋转坐标系
         drawCoordinate(paint, canvas, canvasWidth, canvasHeight)
+        canvas.restore()
+
+        canvas.translate(canvasWidth.toFloat(), 0.toFloat())
+
+        canvas.save()
+        canvas.rotate(-90.toFloat(),canvasWidth.toFloat() / 2, canvasHeight.toFloat() / 2)
+        drawCoordinate(paint, canvas, canvasWidth, canvasHeight)
+        canvas.restore()
+
 
     }
 
@@ -56,6 +66,7 @@ class CoordinateSystemView : View {
         canvas.drawLine(0.0F, 0.0F, canvasWidth.toFloat(), 0.0F, paint);//绘制x轴
         paint.color = 0xff0000ff.toInt()//蓝色
         canvas.drawLine(0.0F, 0.0F, 0.0F, canvasHeight.toFloat(), paint);//绘制y轴
+        canvas.drawCircle(canvasWidth.toFloat() / 2, canvasHeight.toFloat() / 2, 10.toFloat(),  paint);//绘制y轴
     }
 
 

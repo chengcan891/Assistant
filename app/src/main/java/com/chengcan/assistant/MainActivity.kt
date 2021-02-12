@@ -1,7 +1,5 @@
 package com.chengcan.assistant
 
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -61,6 +59,12 @@ class MainActivity : AppCompatActivity() {
 
         setupNavigationMenu(navController)
 
+//        testJavaCrash()
+
+    }
+
+    fun testJavaCrash() {
+        val i = 1 / 0
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
